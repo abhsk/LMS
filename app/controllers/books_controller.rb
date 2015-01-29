@@ -1,7 +1,15 @@
 class BooksController < ApplicationController
 
+	def index
+		@books = Book.all
+	end
+
 	def new
 		@book = Book.new
+	end
+
+	def show
+		@book = Book.find(params[:id])
 	end
 
 	def create
@@ -9,13 +17,13 @@ class BooksController < ApplicationController
 
 		unless book.valid?
 			flash[:error] = "Duplicate ISBN number"
-			redirect_to new_book_path
+			redirect_to books_path
 			return
 		end
 
 		book.save
 		flash[:notice] = "Book successfully created."
-		redirect_to new_book_path
+		redirect_to books_path
 	end
 
 	private 

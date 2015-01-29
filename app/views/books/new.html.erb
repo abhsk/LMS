@@ -1,13 +1,6 @@
 <h2>New Book<h2>
 
-<%= 
-	 [:alert, :notice, :info].collect do |message_type|
-      message = flash.discard(message_type)
-      next unless message
-
-      content_tag :p, message
-    end.join.html_safe
-%>
+<%=flash_message%>
 
 <%=form_for @book, url: books_path, method: :post do |f| %>
 	<div>

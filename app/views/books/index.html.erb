@@ -1,0 +1,4 @@
+<%= flash_message %>
+<% @books.each do |book|%>
+	<%= link_to book.title, book_path(book.id) %>
+<%-end%>
